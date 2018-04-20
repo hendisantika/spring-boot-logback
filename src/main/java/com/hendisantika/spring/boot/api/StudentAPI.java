@@ -1,10 +1,5 @@
 package com.hendisantika.spring.boot.api;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.annotation.PostConstruct;
-
 import com.hendisantika.spring.boot.model.Student;
 import org.jfairy.Fairy;
 import org.slf4j.Logger;
@@ -12,6 +7,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.PostConstruct;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 public class StudentAPI {
@@ -23,13 +22,12 @@ public class StudentAPI {
 
 	/**
 	 * Create a Dummy Student database
-	 * 
-	 * @throws Exception
+	 *
 	 */
 
 	@PostConstruct
-	public void init() throws Exception {
-		logger.info("Intializng Student Database..");
+	public void init() {
+		logger.info("Initializing Student Database..");
 		studentDB = new HashMap<>();
 		for (int i = 0; i < 100; i++) {
 			Student student = new Student(i, fairy.person());
