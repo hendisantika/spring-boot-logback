@@ -4,7 +4,7 @@ import com.hendisantika.spring.boot.model.Student;
 import org.jfairy.Fairy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,7 +36,7 @@ public class StudentAPI {
 		logger.info("Student Database intialized..");
 	}
 
-	@RequestMapping("/students")
+    @GetMapping("/students")
 	public Student searchStudent(@RequestParam(name = "studentId", required = true) Integer studentId) {
 		logger.debug("Searching for student with studentId ::" + studentId);
 		Student student = getStudentById(studentId);

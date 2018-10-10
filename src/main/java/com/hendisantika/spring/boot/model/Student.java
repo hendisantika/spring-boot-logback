@@ -1,16 +1,14 @@
 package com.hendisantika.spring.boot.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.jfairy.producer.person.Address;
 import org.jfairy.producer.person.Person;
 import org.jfairy.producer.person.Person.Sex;
 import org.joda.time.DateTime;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
+//@NoArgsConstructor
+//@AllArgsConstructor
 public class Student {
 
     private Integer studentId;
