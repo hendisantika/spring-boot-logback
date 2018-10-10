@@ -7,8 +7,6 @@ import org.jfairy.producer.person.Person.Sex;
 import org.joda.time.DateTime;
 
 @Data
-//@NoArgsConstructor
-//@AllArgsConstructor
 public class Student {
 
     private Integer studentId;

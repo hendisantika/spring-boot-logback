@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -37,14 +39,27 @@ public class StudentAPI {
 	}
 
     @GetMapping("/students")
-	public Student searchStudent(@RequestParam(name = "studentId", required = true) Integer studentId) {
-		logger.debug("Searching for student with studentId ::" + studentId);
-		Student student = getStudentById(studentId);
-		return student;
-	}
+    public List<Student> studentList() {
+        List<Student> studentList = listAll();
+        return studentList;
+    }
+
+    @GetMapping("/student")
+    public Student searchStudent(@RequestParam(name = "studentId", required = true) Integer studentId) {
+        logger.debug("Searching for student with studentId ::" + studentId);
+        Student student = getStudentById(studentId);
+        return student;
+    }
 
 	private Student getStudentById(Integer studentId) {
 		logger.info("Searching from student database for studentId : " + studentId);
 		return studentDB.get(studentId);
 	}
+
+    private List<Student> listAll() {
+        List<Student> studentList = new ArrayList<Student>(studentDB.values());
+        logger.debug("List All students ....");
+        logger.debug("Count of all students -->  {}", studentList.size());
+        return studentList;
+    }
 }
